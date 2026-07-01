@@ -15,8 +15,8 @@ export const reverseString = (word) => {
 };
 
 export const calcObj = {
-    add: ()=>{},
-    sub: ()=>{},
+    add: (a,b)=> a + b,
+    sub: (a,b)=> a - b,
     div: ()=>{},
     mult:()=>{},
 };

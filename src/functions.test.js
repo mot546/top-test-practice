@@ -35,3 +35,11 @@ test('add, substract, divide, multiply methods exists in calcObj', ()=>{
     expect(calcObj.div).toBeDefined();
     expect(calcObj.mult).toBeDefined();
 });
+test('correct calculation for add', ()=>{
+    const digits = [Math.floor(Math.random() * 100),Math.floor(Math.random() * 100)];
+    expect(calcObj.add(digits[0], digits[1])).toBe(digits[0] + digits[1]);
+});
+test('correct calculation for substraction', ()=>{
+     const digits = [Math.floor(Math.random() * 100),Math.floor(Math.random() * 100)];
+    expect(calcObj.add(digits[0], digits[1])).toBe(digits[0] - digits[1]);
+});
