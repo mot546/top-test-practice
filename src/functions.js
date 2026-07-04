@@ -17,6 +17,37 @@ export const reverseString = (word) => {
 export const calcObj = {
     add: (a,b)=> a + b,
     sub: (a,b)=> a - b,
-    div: ()=>{},
-    mult:()=>{},
+    div: (a,b)=> a / b,
+    mult:(a,b)=> a * b,
+};  
+
+function shiftAlphabet(key){
+    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+    let i = 0;
+    const shiftedAlphabet = alphabet.map((char, index)=>{
+        if(index >= (alphabet.length - key)){
+            const letterAtEnd = alphabet[i];
+            i += 1;
+            const lower = String(letterAtEnd).toLowerCase();
+            return letterAtEnd + lower;
+        }
+        const lowerr = String(alphabet[key+index]).toLowerCase();
+        return alphabet[key+index] + lowerr; 
+    });
+    return shiftedAlphabet.join('');
+}
+export function caesarCipher(wordInput,key){
+    const alphabet = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz';
+    const shiftedAlphabet = shiftAlphabet(key);
+    const toEncrypt = wordInput.split('');
+    const encrypted = toEncrypt.map((char)=>{
+        if(alphabet.includes(char)){
+            return [...shiftedAlphabet].filter((shiftedChar, index)=>[...alphabet][index] === char)
+        }
+        if(toEncrypt.includes(char)){
+            return char;
+        }
+        return " ";
+    });
+    return encrypted.join('');
 };

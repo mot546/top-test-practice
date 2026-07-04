@@ -1,7 +1,8 @@
 import {
     capitalize,
     reverseString,
-    calcObj
+    calcObj,
+    caesarCipher
 } from './functions.js';
 
 // capitalize
@@ -25,7 +26,7 @@ test('reverseString working',()=>{
     });
 });
 
-//calcu object
+// calcu object
 test('calcu obj exists', ()=>{
     expect(calcObj).toBeDefined();
 });
@@ -41,5 +42,33 @@ test('correct calculation for add', ()=>{
 });
 test('correct calculation for substraction', ()=>{
      const digits = [Math.floor(Math.random() * 100),Math.floor(Math.random() * 100)];
-    expect(calcObj.add(digits[0], digits[1])).toBe(digits[0] - digits[1]);
+    expect(calcObj.sub(digits[0], digits[1])).toBe(digits[0] - digits[1]);
 });
+test('correct calculation for division', ()=>{
+    const digits = [Math.floor(Math.random() * 100),Math.floor(Math.random() * 100)];
+    expect(calcObj.div(digits[0], digits[1])).toBeCloseTo(digits[0] / digits[1]);
+});
+test('correct calculation for multiplication', ()=>{
+    const digits = [Math.floor(Math.random() * 100),Math.floor(Math.random() * 100)];
+    expect(calcObj.mult(digits[0], digits[1])).toBeCloseTo(digits[0] * digits[1]);
+});
+
+// caesar shifter
+test('ceasar exists',()=>{
+    expect(caesarCipher).toBeDefined();
+});
+test('xyz becomes abc', ()=>{
+    expect(caesarCipher('xyz',3)).toBe('abc');
+});
+test('abc becomes def', ()=>{
+    expect(caesarCipher('abc',3)).toBe('def');
+});
+test('works with space',()=>{
+    expect(caesarCipher('abc xyz',3)).toBe('def abc');
+});
+test('works with special chars',()=>{
+    expect(caesarCipher('abc## xyz',3)).toBe('def## abc');
+});
+test('working keys',()=>{
+    expect(caesarCipher('abcdefghijklmnop',5)).toBe('fghijklmnopqrstu');
+})
