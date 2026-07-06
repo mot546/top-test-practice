@@ -51,3 +51,17 @@ export function caesarCipher(wordInput,key){
     });
     return encrypted.join('');
 };
+
+export function anAnalyzer(array){
+    const toAverage = (arr) => {
+        const sum = arr.reduce((total,curr )=>total+curr,0);
+        return Math.round(sum / arr.length); 
+    };
+
+    const min = Math.min(...array);
+    const max = Math.max(...array);
+    const {length} = array;
+    const average = toAverage(array);
+
+    return {average, length, max, min};
+};

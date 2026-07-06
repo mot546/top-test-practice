@@ -2,7 +2,9 @@ import {
     capitalize,
     reverseString,
     calcObj,
-    caesarCipher
+    caesarCipher,
+    anAnalyzer
+
 } from './functions.js';
 
 // capitalize
@@ -71,4 +73,59 @@ test('works with special chars',()=>{
 });
 test('working keys',()=>{
     expect(caesarCipher('abcdefghijklmnop',5)).toBe('fghijklmnopqrstu');
-})
+});
+
+// an analyzer
+test('analyzer exists',()=>{
+    expect(anAnalyzer).toBeDefined();
+});
+test('returns an object of averagen,min,max, length', ()=>{
+    const expected = {
+   average: 4,
+   min: 1,
+   max: 8,
+   length: 6
+    };
+    const input = [1,8,3,4,2,6];
+    expect(anAnalyzer(input)).toEqual(expected);
+});
+test('returns the right average', ()=>{
+    const expected = {
+   average: 5,
+   min: 1,
+   max: 10,
+   length: 7
+    };
+    const input = [1,8,3,4,2,6,10];
+    expect(anAnalyzer(input)).toEqual(expected);
+});
+test('returns the right min', ()=>{
+    const expected = {
+   average: 7,
+   min: 2,
+   max: 13,
+   length: 7
+    };
+    const input = [13,8,3,4,2,6,10];
+    expect(anAnalyzer(input)).toEqual(expected);
+});
+test('returns the right max', ()=>{
+    const expected = {
+   average: 7,
+   min: 2,
+   max: 13,
+   length: 7
+    };
+    const input = [13,8,3,4,2,6,10];
+    expect(anAnalyzer(input)).toEqual(expected);
+});
+test('returns the right length', ()=>{
+    const expected = {
+   average: 7,
+   min: 2,
+   max: 13,
+   length: 7
+    };
+    const input = [13,8,3,4,2,6,10];
+    expect(anAnalyzer(input)).toEqual(expected);
+});
